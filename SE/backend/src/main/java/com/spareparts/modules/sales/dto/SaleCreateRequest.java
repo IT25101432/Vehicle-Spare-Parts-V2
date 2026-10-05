@@ -1,10 +1,17 @@
 package com.spareparts.modules.sales.dto;
 
 import java.util.List;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 public class SaleCreateRequest {
+
     private String customerName;
+
+    @NotBlank(message = "Number is required")
+    @Pattern(regexp = "^\\d{10}$", message = "Number must be exactly 10 digits")
     private String customerPhone;
+
     private List<SaleItemDto> items;
 
     public String getCustomerName() { return customerName; }
