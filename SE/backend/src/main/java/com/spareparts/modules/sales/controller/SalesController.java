@@ -4,6 +4,7 @@ import com.spareparts.modules.sales.dto.SaleCreateRequest;
 import com.spareparts.modules.sales.dto.SaleResponse;
 import com.spareparts.modules.sales.dto.SaleUpdateRequest;
 import com.spareparts.modules.sales.service.SalesService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class SalesController {
     private final SalesService salesService;
 
     @PostMapping
-    public ResponseEntity<SaleResponse> createSale(@RequestBody SaleCreateRequest request) {
+    public ResponseEntity<SaleResponse> createSale(@Valid @RequestBody SaleCreateRequest request) {
         return new ResponseEntity<>(salesService.createSale(request), HttpStatus.CREATED);
     }
 
