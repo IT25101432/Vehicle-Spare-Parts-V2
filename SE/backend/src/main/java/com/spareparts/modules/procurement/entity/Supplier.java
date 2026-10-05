@@ -40,7 +40,7 @@ public class Supplier extends AuditableEntity {
     public void setEmail(String email) { this.email = email; }
     public void setPhone(String phone) { this.phone = phone; }
     public void setAddress(String address) { this.address = address; }
-
+    
     public static SupplierBuilder builder() { return new SupplierBuilder(); }
     public static class SupplierBuilder {
         private String name; private String contactPerson; private String email; private String phone; private String address; private boolean isActive = true;
