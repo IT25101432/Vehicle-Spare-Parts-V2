@@ -1,0 +1,158 @@
+package com.spareparts.modules.inventory.dto;
+
+import java.math.BigDecimal;
+
+public class SparePartResponse {
+
+    // Spare part ID
+    private Long id;
+
+    // Spare part number
+    private String partNumber;
+
+    // Spare part name
+    private String name;
+
+    // Spare part description
+    private String description;
+
+    // Spare part price
+    private BigDecimal price;
+
+    // Available stock quantity
+    private Integer stockQuantity;
+
+    // Minimum stock level
+    private Integer reorderLevel;
+
+    // Category name
+    private String categoryName;
+
+    // Category ID
+    private Long categoryId;
+
+    // Empty constructor
+    public SparePartResponse() {}
+
+    // Get and set ID
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    // Get and set part number
+    public String getPartNumber() { return partNumber; }
+    public void setPartNumber(String partNumber) { this.partNumber = partNumber; }
+
+    // Get and set name
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    // Get and set description
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+
+    // Get and set price
+    public BigDecimal getPrice() { return price; }
+    public void setPrice(BigDecimal price) { this.price = price; }
+
+    // Get and set stock quantity
+    public Integer getStockQuantity() { return stockQuantity; }
+    public void setStockQuantity(Integer stockQuantity) { this.stockQuantity = stockQuantity; }
+
+    // Get and set reorder level
+    public Integer getReorderLevel() { return reorderLevel; }
+    public void setReorderLevel(Integer reorderLevel) { this.reorderLevel = reorderLevel; }
+
+    // Get and set category name
+    public String getCategoryName() { return categoryName; }
+    public void setCategoryName(String categoryName) { this.categoryName = categoryName; }
+
+    // Get and set category ID
+    public Long getCategoryId() { return categoryId; }
+    public void setCategoryId(Long categoryId) { this.categoryId = categoryId; }
+
+
+    // Create a builder
+    public static SparePartResponseBuilder builder() {
+        return new SparePartResponseBuilder();
+    }
+
+    // Builder class
+    public static class SparePartResponseBuilder {
+
+        private Long id, categoryId;
+        private String partNumber, name, description, categoryName;
+        private BigDecimal price;
+        private Integer stockQuantity, reorderLevel;
+
+        // Set ID
+        public SparePartResponseBuilder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        // Set part number
+        public SparePartResponseBuilder partNumber(String v) {
+            this.partNumber = v;
+            return this;
+        }
+
+        // Set name
+        public SparePartResponseBuilder name(String v) {
+            this.name = v;
+            return this;
+        }
+
+        // Set description
+        public SparePartResponseBuilder description(String v) {
+            this.description = v;
+            return this;
+        }
+
+        // Set price
+        public SparePartResponseBuilder price(BigDecimal v) {
+            this.price = v;
+            return this;
+        }
+
+        // Set stock quantity
+        public SparePartResponseBuilder stockQuantity(Integer v) {
+            this.stockQuantity = v;
+            return this;
+        }
+
+        // Set reorder level
+        public SparePartResponseBuilder reorderLevel(Integer v) {
+            this.reorderLevel = v;
+            return this;
+        }
+
+        // Set category name
+        public SparePartResponseBuilder categoryName(String v) {
+            this.categoryName = v;
+            return this;
+        }
+
+        // Set category ID
+        public SparePartResponseBuilder categoryId(Long v) {
+            this.categoryId = v;
+            return this;
+        }
+
+        // Build the response object
+        public SparePartResponse build() {
+            SparePartResponse r = new SparePartResponse();
+
+            r.id = id;
+            r.partNumber = partNumber;
+            r.name = name;
+            r.description = description;
+            r.price = price;
+            r.stockQuantity = stockQuantity;
+            r.reorderLevel = reorderLevel;
+            r.categoryName = categoryName;
+            r.categoryId = categoryId;
+
+            return r;
+        }
+    }
+}

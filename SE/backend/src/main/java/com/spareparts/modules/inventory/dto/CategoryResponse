@@ -1,0 +1,67 @@
+package com.spareparts.modules.inventory.dto;
+
+public class CategoryResponse {
+
+    // Category ID
+    private Long id;
+
+    // Category name
+    private String name;
+
+    // Category description
+    private String description;
+
+    // Empty constructor
+    public CategoryResponse() {}
+
+    // Get and set ID
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    // Get and set name
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    // Get and set description
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+
+    // Create a builder
+    public static CategoryResponseBuilder builder() {
+        return new CategoryResponseBuilder();
+    }
+
+    // Builder class
+    public static class CategoryResponseBuilder {
+
+        private Long id;
+        private String name, description;
+
+        // Set ID
+        public CategoryResponseBuilder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        // Set name
+        public CategoryResponseBuilder name(String name) {
+            this.name = name;
+            return this;
+        }
+
+        // Set description
+        public CategoryResponseBuilder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        // Build the response object
+        public CategoryResponse build() {
+            CategoryResponse r = new CategoryResponse();
+            r.id = id;
+            r.name = name;
+            r.description = description;
+            return r;
+        }
+    }
+}

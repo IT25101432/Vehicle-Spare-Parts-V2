@@ -1,0 +1,21 @@
+package com.spareparts.modules.inventory.dto;
+
+import jakarta.validation.constraints.NotBlank;
+
+public class CategoryRequest {
+
+    // Category name is required
+    @NotBlank(message = "Category name is required")
+    private String name;
+
+    // Category description
+    private String description;
+
+    // Get and set name
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    // Get and set description
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+}

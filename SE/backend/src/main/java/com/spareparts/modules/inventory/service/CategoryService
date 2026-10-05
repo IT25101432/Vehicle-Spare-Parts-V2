@@ -1,0 +1,24 @@
+package com.spareparts.modules.inventory.service;
+
+import com.spareparts.modules.inventory.dto.CategoryRequest;
+import com.spareparts.modules.inventory.dto.CategoryResponse;
+
+import java.util.List;
+
+public interface CategoryService {
+
+    // Create a new category
+    CategoryResponse createCategory(CategoryRequest request);
+
+    // Get a category by ID
+    CategoryResponse getCategoryById(Long id);
+
+    // Get all categories
+    List<CategoryResponse> getAllCategories();
+
+    // Update an existing category
+    CategoryResponse updateCategory(Long id, CategoryRequest request);
+
+    // Delete a category
+    void deleteCategory(Long id);
+}
