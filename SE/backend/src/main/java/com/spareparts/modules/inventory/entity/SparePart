@@ -8,70 +8,132 @@ import java.math.BigDecimal;
 @Table(name = "spare_parts")
 public class SparePart extends AuditableEntity {
 
+    // Primary key
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // Unique part number
     @Column(name = "part_number", nullable = false, unique = true)
     private String partNumber;
 
+    // Spare part name
     @Column(nullable = false)
     private String name;
 
+    // Spare part description
     private String description;
 
+    // Spare part price
     @Column(nullable = false)
     private BigDecimal price;
 
+    // Available stock quantity
     @Column(name = "stock_quantity", nullable = false)
     private Integer stockQuantity;
 
+    // Minimum stock level
     @Column(name = "reorder_level", nullable = false)
     private Integer reorderLevel;
 
+    // Many spare parts can belong to one category
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
 
+    // Empty constructor
     public SparePart() {}
 
+    // Getters and setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
+
     public String getPartNumber() { return partNumber; }
     public void setPartNumber(String partNumber) { this.partNumber = partNumber; }
+
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
+
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
+
     public BigDecimal getPrice() { return price; }
     public void setPrice(BigDecimal price) { this.price = price; }
+
     public Integer getStockQuantity() { return stockQuantity; }
     public void setStockQuantity(Integer stockQuantity) { this.stockQuantity = stockQuantity; }
+
     public Integer getReorderLevel() { return reorderLevel; }
     public void setReorderLevel(Integer reorderLevel) { this.reorderLevel = reorderLevel; }
+
     public Category getCategory() { return category; }
     public void setCategory(Category category) { this.category = category; }
 
+    // Create a builder
     public static SparePartBuilder builder() { return new SparePartBuilder(); }
 
+    // Builder class
     public static class SparePartBuilder {
+
         private String partNumber, name, description;
         private BigDecimal price;
         private Integer stockQuantity, reorderLevel;
         private Category category;
 
-        public SparePartBuilder partNumber(String v) { this.partNumber = v; return this; }
-        public SparePartBuilder name(String v) { this.name = v; return this; }
-        public SparePartBuilder description(String v) { this.description = v; return this; }
-        public SparePartBuilder price(BigDecimal v) { this.price = v; return this; }
-        public SparePartBuilder stockQuantity(Integer v) { this.stockQuantity = v; return this; }
-        public SparePartBuilder reorderLevel(Integer v) { this.reorderLevel = v; return this; }
-        public SparePartBuilder category(Category v) { this.category = v; return this; }
+        // Set part number
+        public SparePartBuilder partNumber(String v) {
+            this.partNumber = v;
+            return this;
+        }
+
+        // Set name
+        public SparePartBuilder name(String v) {
+            this.name = v;
+            return this;
+        }
+
+        // Set description
+        public SparePartBuilder description(String v) {
+            this.description = v;
+            return this;
+        }
+
+        // Set price
+        public SparePartBuilder price(BigDecimal v) {
+            this.price = v;
+            return this;
+        }
+
+        // Set stock quantity
+        public SparePartBuilder stockQuantity(Integer v) {
+            this.stockQuantity = v;
+            return this;
+        }
+
+        // Set reorder level
+        public SparePartBuilder reorderLevel(Integer v) {
+            this.reorderLevel = v;
+            return this;
+        }
+
+        // Set category
+        public SparePartBuilder category(Category v) {
+            this.category = v;
+            return this;
+        }
+
+        // Build the SparePart object
         public SparePart build() {
             SparePart s = new SparePart();
-            s.partNumber = partNumber; s.name = name; s.description = description;
-            s.price = price; s.stockQuantity = stockQuantity; s.reorderLevel = reorderLevel;
+
+            s.partNumber = partNumber;
+            s.name = name;
+            s.description = description;
+            s.price = price;
+            s.stockQuantity = stockQuantity;
+            s.reorderLevel = reorderLevel;
             s.category = category;
+
             return s;
         }
     }
