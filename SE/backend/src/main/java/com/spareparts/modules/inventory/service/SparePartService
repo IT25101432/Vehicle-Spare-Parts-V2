@@ -7,9 +7,19 @@ import com.spareparts.modules.inventory.dto.SparePartUpdateRequest;
 import java.util.List;
 
 public interface SparePartService {
+
+    // Add a new spare part
     SparePartResponse addPart(SparePartCreateRequest request);
+
+    // Get a spare part by ID
     SparePartResponse getPartById(Long id);
+
+    // Search for spare parts
     List<SparePartResponse> searchParts(String keyword);
+
+    // Update a spare part
     SparePartResponse updatePart(Long id, SparePartUpdateRequest request);
+
+    // Delete a spare part
     void deletePart(Long id);
 }
