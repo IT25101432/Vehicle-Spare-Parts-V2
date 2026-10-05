@@ -13,53 +13,82 @@ import java.util.stream.Collectors;
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
+    // Constructor for category repository
     public CategoryServiceImpl(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
 
-
+    // Repository for category data
     private final CategoryRepository categoryRepository;
 
     @Override
     public CategoryResponse createCategory(CategoryRequest request) {
+
+        // Check if category name already exists
         if (categoryRepository.existsByName(request.getName())) {
             throw new RuntimeException("Category name already exists");
         }
+
+        // Create a new category
         Category category = Category.builder()
                 .name(request.getName())
                 .description(request.getDescription())
                 .build();
+
+        // Save category and return response
         return mapToResponse(categoryRepository.save(category));
     }
 
     @Override
     public CategoryResponse getCategoryById(Long id) {
+
+        // Find category by ID
         Category category = categoryRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Category not found"));
+
+        // Return category details
         return mapToResponse(category);
     }
 
     @Override
     public List<CategoryResponse> getAllCategories() {
-        return categoryRepository.findAll().stream().map(this::mapToResponse).collect(Collectors.toList());
+
+        // Get all categories
+        return categoryRepository.findAll()
+                .stream()
+                .map(this::mapToResponse)
+                .collect(Collectors.toList());
     }
 
     @Override
     public CategoryResponse updateCategory(Long id, CategoryRequest request) {
+
+        // Find category by ID
         Category category = categoryRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Category not found"));
+
+        // Update category details
         category.setName(request.getName());
         category.setDescription(request.getDescription());
+
+        // Save updated category
         return mapToResponse(categoryRepository.save(category));
     }
 
     @Override
     public void deleteCategory(Long id) {
-        if (!categoryRepository.existsById(id)) throw new RuntimeException("Category not found");
+
+        // Check if category exists
+        if (!categoryRepository.existsById(id))
+            throw new RuntimeException("Category not found");
+
+        // Delete the category
         categoryRepository.deleteById(id);
     }
 
+    // Convert Category entity to Response DTO
     private CategoryResponse mapToResponse(Category category) {
+
         return CategoryResponse.builder()
                 .id(category.getId())
                 .name(category.getName())
