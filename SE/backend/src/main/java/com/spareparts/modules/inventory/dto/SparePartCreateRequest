@@ -3,26 +3,53 @@ package com.spareparts.modules.inventory.dto;
 import java.math.BigDecimal;
 
 public class SparePartCreateRequest {
+
+    // Spare part number
     private String partNumber;
+
+    // Spare part name
     private String name;
+
+    // Spare part description
     private String description;
+
+    // Spare part price
     private BigDecimal price;
+
+    // Stock quantity
     private Integer stockQuantity;
+
+    // Minimum stock level
     private Integer reorderLevel;
+
+    // Category ID
     private Long categoryId;
 
+    // Get and set part number
     public String getPartNumber() { return partNumber; }
     public void setPartNumber(String partNumber) { this.partNumber = partNumber; }
+
+    // Get and set name
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
+
+    // Get and set description
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
+
+    // Get and set price
     public BigDecimal getPrice() { return price; }
     public void setPrice(BigDecimal price) { this.price = price; }
+
+    // Get and set stock quantity
     public Integer getStockQuantity() { return stockQuantity; }
     public void setStockQuantity(Integer stockQuantity) { this.stockQuantity = stockQuantity; }
+
+    // Get and set reorder level
     public Integer getReorderLevel() { return reorderLevel; }
     public void setReorderLevel(Integer reorderLevel) { this.reorderLevel = reorderLevel; }
+
+    // Get and set category ID
     public Long getCategoryId() { return categoryId; }
     public void setCategoryId(Long categoryId) { this.categoryId = categoryId; }
 }
