@@ -14,36 +14,61 @@ import java.util.List;
 @RequestMapping("/api/parts")
 public class SparePartController {
 
+    // Constructor for service
     public SparePartController(SparePartService sparePartService) {
         this.sparePartService = sparePartService;
     }
 
-
+    // Spare part service
     private final SparePartService sparePartService;
 
+    // Create a new spare part
     @PostMapping
-    public ResponseEntity<SparePartResponse> create(@RequestBody SparePartCreateRequest request) {
-        return new ResponseEntity<>(sparePartService.addPart(request), HttpStatus.CREATED);
+    public ResponseEntity<SparePartResponse> create(
+            @RequestBody SparePartCreateRequest request) {
+
+        return new ResponseEntity<>(
+                sparePartService.addPart(request),
+                HttpStatus.CREATED
+        );
     }
 
+    // Get all spare parts
     @GetMapping
     public ResponseEntity<List<SparePartResponse>> getAll() {
-        return ResponseEntity.ok(sparePartService.searchParts(""));
+
+        return ResponseEntity.ok(
+                sparePartService.searchParts("")
+        );
     }
 
+    // Get spare part by ID
     @GetMapping("/{id}")
-    public ResponseEntity<SparePartResponse> getById(@PathVariable Long id) {
-        return ResponseEntity.ok(sparePartService.getPartById(id));
+    public ResponseEntity<SparePartResponse> getById(
+            @PathVariable Long id) {
+
+        return ResponseEntity.ok(
+                sparePartService.getPartById(id)
+        );
     }
 
+    // Update a spare part
     @PutMapping("/{id}")
-    public ResponseEntity<SparePartResponse> update(@PathVariable Long id, @RequestBody SparePartUpdateRequest request) {
-        return ResponseEntity.ok(sparePartService.updatePart(id, request));
+    public ResponseEntity<SparePartResponse> update(
+            @PathVariable Long id,
+            @RequestBody SparePartUpdateRequest request) {
+
+        return ResponseEntity.ok(
+                sparePartService.updatePart(id, request)
+        );
     }
 
+    // Delete a spare part
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
+
         sparePartService.deletePart(id);
+
         return ResponseEntity.noContent().build();
     }
 }
